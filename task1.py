@@ -85,7 +85,7 @@ def recommend(movie):
     distances = sorted(list(enumerate(similarity[index])),reverse=True,key = lambda x: x[1])
     for i in distances[1:6]:
         print(new.iloc[i[0]].title)
-          new['title'].values
+        new['title'].values
 from pyspark.sql import SparkSession
 from pyspark.ml.recommendation import ALS
 from pyspark.sql.functions import col
