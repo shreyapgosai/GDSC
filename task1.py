@@ -78,7 +78,7 @@ def stem(text):
         vector = cv.fit_transform(new['tags']).toarray()
 from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vector)
-similarity
+
 new[new['title'] == 'The Lego Movie'].index[0]
 def recommend(movie):
     index = new[new['title'] == movie].index[0]
