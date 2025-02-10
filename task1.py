@@ -89,7 +89,6 @@ def recommend(movie):
         new['title'].values
 
 recommend('Avatar')
-print(hybrid_recommend(user_id=6, movie='Avatar'))
 import streamlit as st
 import pickle
 import pandas as pd
