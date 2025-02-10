@@ -64,7 +64,12 @@ new.head()
 new['tags'][0]
 from sklearn.feature_extraction.text import CountVectorizer
 cv = CountVectorizer(max_features=5000,stop_words='english')
-cv.fit_transform(new['tags']).toarray()
+
+if 'tags' in new.columns:
+    new['tags'] = new['tags'].fillna('')  # Replace NaN values with empty strings
+    vector = cv.fit_transform(new['tags']).toarray()
+else:
+    raise ValueError("Column 'tags' not found in the dataframe 'new'")
 
 def stem(text):
     y=[]
