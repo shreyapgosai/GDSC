@@ -17,9 +17,9 @@ def convert(text):
     return L 
 movies.dropna(inplace=True)
 movies['genres'] = movies['genres'].apply(convert)
-movies.head()
+
 movies['keywords'] = movies['keywords'].apply(convert)
-movies.head()
+
 import ast
 ast.literal_eval('[{"id": 28, "name": "Action"}, {"id": 12, "name": "Adventure"}, {"id": 14, "name": "Fantasy"}, {"id": 878, "name": "Science Fiction"}]')
 def convert3(text):
@@ -61,8 +61,8 @@ movies['tags'] = movies['overview'] + movies['genres'] + movies['keywords'] + mo
 new = movies.drop(columns=['overview','genres','keywords','cast','crew'])
 #new.head()
 new['tags'] = new['tags'].apply(lambda x: " ".join(x))
-new.head()
-new['tags'][0]
+
+
 from sklearn.feature_extraction.text import CountVectorizer
 cv = CountVectorizer(max_features=5000,stop_words='english')
 
