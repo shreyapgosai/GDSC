@@ -54,10 +54,14 @@ def recommend(movie):
         print(new.iloc[i[0]].title)
 
 
-here we use sklearn to use its feature countvextorizer
+here we use sklearn to use its feature countvextorizer and we get the distances...
 
 
 
 
-##
+##HOW TO RUN 
+
+use streamlit and create app
+and then submit the link of git hub and it will scan the backend first and after this we can run frontend
+
     
