@@ -87,61 +87,6 @@ def recommend(movie):
     for i in distances[1:6]:
         print(new.iloc[i[0]].title)
         new['title'].values
-from pyspark.sql import SparkSession
-from pyspark.ml.recommendation import ALS
-from pyspark.sql.functions import col
-import pandas as pd
-import numpy as np
-spark = SparkSession.builder.appName("ALS_Recommender").getOrCreate()
-data = [
-    (0, 10, 4.0), (0, 20, 3.5), (0, 30, 5.0),
-    (1, 10, 2.0), (1, 20, 4.5), (1, 30, 3.0),
-    (2, 10, 5.0), (2, 20, 3.5), (2, 30, 4.0),
-]
-columns = ["userId", "movieId", "rating"]
-ratings_df = spark.createDataFrame(data, columns)
-
-# Train ALS model
-als = ALS(
-    userCol="userId",
-    itemCol="movieId",
-    ratingCol="rating",
-    nonnegative=True,
-    implicitPrefs=False,
-    rank=10,
-    maxIter=10,
-    regParam=0.1
-)
-model = als.fit(ratings_df)
-
-
-def get_cf_score(user_id, movie_id):
-    """ Predict rating for a given user and movie """
-    user_df = spark.createDataFrame([(user_id, movie_id)], ["userId", "movieId"])
-    prediction = model.transform(user_df).collect()
-    return prediction[0]["prediction"] if prediction else 0 
-def recommend(movie):
-    """ Content-Based Filtering function (same as your original code) """
-    index = movies[movies['title'] == movie].index[0]
-    distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
-    return [movies.iloc[i[0]].title for i in distances[1:6]]
-
-def hybrid_recommend(user_id, movie):
-    """ Combines Content-Based and ALS Collaborative Filtering """
-    content_rec = recommend(movie)  # Get content-based recommendations
-    movie_ids = movies[movies['title'].isin(content_rec)]['movie_id'].tolist()
-
-    # Get CF Scores using ALS
-    cf_scores = [get_cf_score(user_id, mid) for mid in movie_ids]
-
-    # Compute Hybrid Scores (50% CF + 50% Content Similarity)
-    hybrid_scores = np.array(cf_scores) * 0.5 + np.array([
-        similarity[movies[movies['title'] == movie].index[0]][movies[movies['movie_id'] == mid].index[0]]
-        for mid in movie_ids
-    ]) * 0.5
-
-    ranked_movies = [x for _, x in sorted(zip(hybrid_scores, content_rec), reverse=True)]
-    return ranked_movies[:5]
 
 recommend('Avatar')
 print(hybrid_recommend(user_id=6, movie='Avatar'))
