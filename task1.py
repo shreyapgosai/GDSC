@@ -54,7 +54,7 @@ movies['cast'] = movies['cast'].apply(collapse)
 movies['crew'] = movies['crew'].apply(collapse)
 movies['genres'] = movies['genres'].apply(collapse)
 movies['keywords'] = movies['keywords'].apply(collapse)
-movies.head()
+
 movies['overview'] = movies['overview'].apply(lambda x:x.split())
 movies['tags'] = movies['overview'] + movies['genres'] + movies['keywords'] + movies['cast'] + movies['crew']
 new = movies.drop(columns=['overview','genres','keywords','cast','crew'])
