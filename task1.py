@@ -83,9 +83,7 @@ new[new['title'] == 'The Lego Movie'].index[0]
 def recommend(movie):
     index = new[new['title'] == movie].index[0]
     distances = sorted(list(enumerate(similarity[index])),reverse=True,key = lambda x: x[1])
-    for i in distances[1:6]:
-        print(new.iloc[i[0]].title)
-        new['title'].values
+    
 
 recommend('Avatar')
 import streamlit as st
