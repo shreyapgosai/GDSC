@@ -65,7 +65,6 @@ here we use sklearn to use its feature countvextorizer and we get the distances.
 use streamlit and create app
 and then submit the link of git hub and it will scan the backend first and after this we can run frontend...
 
-here in frontend i print similarity matrix also ......
 
 APP LINK:https://ft9vrpgbvprys8b2vvrjjr.streamlit.app/
 
