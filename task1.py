@@ -1,9 +1,5 @@
 import numpy as np 
 import pandas as pd 
-import os
-for dirname, _, filenames in os.walk('/kaggle/input'):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
 movies = pd.read_csv('https://github.com/shreyapgosai/GDSC/blob/main/tmdb_5000_movies.csv')
 credits = pd.read_csv('https://github.com/shreyapgosai/GDSC/blob/main/tmdb_5000_credits.zip') 
 movies.head(2)
