@@ -75,8 +75,7 @@ def stem(text):
     y=[]
     for i in text.split:
         ps.stem(i)
-      vector = cv.fit_transform(new['tags']).toarray()
-vector.shape
+        vector = cv.fit_transform(new['tags']).toarray()
 from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vector)
 similarity
