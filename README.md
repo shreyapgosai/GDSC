@@ -1,7 +1,8 @@
 # GDSC
 HERE I HAVE MADE A PROJECT OF A MOVIE RECOMMENDATION SYSTEM 
-here there are two methode 
+basically there are two methode 
 contant based and collabrative.....
+here there is contant based system
 
 LIBRERIES....
 here there are numpy,sklearn,panda used in this code
