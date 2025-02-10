@@ -1,7 +1,7 @@
 import numpy as np 
 import pandas as pd 
-movies = pd.read_csv('https://github.com/shreyapgosai/GDSC/blob/main/tmdb_5000_movies.csv')
-credits = pd.read_csv('https://github.com/shreyapgosai/GDSC/blob/main/tmdb_5000_credits.zip') 
+movies = pd.read_csv('')
+credits = pd.read_csv('https://raw.githubusercontent.com/shreyapgosai/GDSC/main/tmdb_5000_credits.zip') 
 movies.head(2)
 movies.shape
 credits.head()
