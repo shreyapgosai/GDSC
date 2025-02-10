@@ -30,7 +30,7 @@ def convert3(text):
         counter+=1
     return L 
 movies['cast'] = movies['cast'].apply(convert)
-movies.head()
+
 movies['cast'] = movies['cast'].apply(lambda x:x[0:3])
 def fetch_director(text):
     L = []
