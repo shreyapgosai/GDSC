@@ -62,7 +62,6 @@ new = movies.drop(columns=['overview','genres','keywords','cast','crew'])
 new['tags'] = new['tags'].apply(lambda x: " ".join(x))
 new.head()
 new['tags'][0]
-
 from sklearn.feature_extraction.text import CountVectorizer
 cv = CountVectorizer(max_features=5000,stop_words='english')
 
