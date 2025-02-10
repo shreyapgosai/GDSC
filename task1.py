@@ -1,5 +1,6 @@
 import numpy as np 
 import pandas as pd 
+import sklearn 
 movies = pd.read_csv('https://raw.githubusercontent.com/shreyapgosai/GDSC/main/tmdb_5000_movies.csv')
 credits = pd.read_csv('https://raw.githubusercontent.com/shreyapgosai/GDSC/main/tmdb_5000_credits.zip') 
 movies.head(2)
