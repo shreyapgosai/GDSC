@@ -1,71 +1,115 @@
-# GDSC
-HERE I HAVE MADE A PROJECT OF A MOVIE RECOMMENDATION SYSTEM 
-basically there are two methode 
-contant based and collabrative.....
-here there is contant based system
+MOVIE RECOMMENDATION SYSTEM
 
-LIBRERIES....
-here there are numpy,sklearn,panda used in this code
+Table of Contents
+Overview
+Features
+System Architecture
+Key Components
 
+Data Processing & Feature Engineering
+Text Vectorization (CountVectorizer)
+Similarity Computation (Cosine Similarity)
+Recommendation Engine
+UI/UX and Web Deployment
+Installation and Usage
+Prerequisites
+Setup
+Team
+License
+Overview
 
+The Movie Recommendation System is a machine learning-based content filtering system that recommends movies based on similarity of content features.
 
-DATASET.....
-tmdb_5000_credits
-tmdb_5000_movies
+It uses movie metadata such as overview, genres, keywords, cast, and crew to compute similarity between movies and suggest relevant recommendations.
 
+The system is designed to mimic real-world recommendation engines like Netflix.
 
-@CODE:
-import ast
-ast.literal_eval('[{"id": 28, "name": "Action"}, {"id": 12, "name": "Adventure"}, {"id": 14, "name": "Fantasy"}, {"id": 878, "name": "Science Fiction"}]')
-def convert3(text):
-    L = []
-    counter = 0
-    for i in ast.literal_eval(text):
-        if counter < 3:
-            L.append(i['name'])
-        counter+=1
-    return L 
-movies['cast'] = movies['cast'].apply(convert)
-movies.head()
+Features
 
-    #for convert text to list form
+Smart Data Processing: Cleans and merges movie datasets
+Multifeature Analysis: Uses genres, keywords, cast, crew, overview
+Text-Based Representation: Converts text into numerical vectors
+Similarity-Based Recommendations: Uses cosine similarity
+Fast Retrieval: Efficient ranking of similar movies
+Simple Web Interface: Built using Streamlit
 
+System Architecture
 
-##MAIN THOUGHT OF THE CODE....
-here cosine methode we used basically it fatches the most important words from overview of every movie and tries to fix the movies in a vector space according to those words then it will find distance of different movies and will come to know how much these movies are similar...and according to these the similar type of movies are decided
+Input Movie Title
+→ Feature Extraction (Genres, Keywords, Cast, Crew, Overview)
+→ Data Cleaning & Processing
+→ Tag Generation
+→ Text Vectorization (CountVectorizer)
+→ Cosine Similarity Matrix
+→ Recommendation Engine
+→ Top 5 Similar Movies Output
 
+Key Components
+1. Data Processing & Feature Engineering
 
+Movies dataset is cleaned and transformed by extracting useful features:
 
-@CODE FOR THIS
+Genres
+Keywords
+Cast (Top 3 actors)
+Crew (Director)
+Overview
 
+All features are combined into a single text field called tags.
 
-from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer(max_features=5000,stop_words='english')
-cv.fit_transform(new['tags']).toarray()
-vector = cv.fit_transform(new['tags']).toarray()
-vector.shape
+2. Text Vectorization (CountVectorizer)
+
+Text data is converted into numerical vectors using:
+
+CountVectorizer(max_features=5000, stop_words='english')
+
+This converts movie tags into a matrix of word frequency representation.
+
+3. Similarity Computation (Cosine Similarity)
+
+Similarity between movies is calculated using cosine similarity:
+
 from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vector)
-similarity
-new[new['title'] == 'The Lego Movie'].index[0]
+
+This measures how close two movies are in vector space.
+
+4. Recommendation Engine
+
 def recommend(movie):
-    index = new[new['title'] == movie].index[0]
-    distances = sorted(list(enumerate(similarity[index])),reverse=True,key = lambda x: x[1])
-    for i in distances[1:6]:
-        print(new.iloc[i[0]].title)
+index = new[new['title'] == movie].index[0]
+distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
+for i in distances[1:6]:
+print(new.iloc[i[0]].title)
 
+The system returns the top 5 most similar movies.
 
-here we use sklearn to use its feature countvextorizer and we get the distances...
+UI/UX and Web Deployment
+Built using Streamlit
+Dropdown menu for movie selection
+One-click recommendation button
+Displays top recommended movies
+Simple and interactive UI
+Installation and Usage
+Prerequisites
 
+Python 3.8+
+Libraries: numpy, pandas, sklearn, streamlit
 
+Setup
 
+git clone https://github.com/your-username/movie-recommendation-system.git
+cd movie-recommendation-system
 
-##HOW TO RUN 
+pip install -r requirements.txt
 
-use streamlit and create app
-and then submit the link of git hub and it will scan the backend first and after this we can run frontend...
+Run Application
 
+streamlit run app.py
 
-APP LINK:https://ft9vrpgbvprys8b2vvrjjr.streamlit.app/
+Then open:
+http://localhost:8501
 
-    
+Team
+
+Shreya Gosai
