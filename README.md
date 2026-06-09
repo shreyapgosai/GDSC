@@ -85,17 +85,9 @@ This computes similarity between all movies using cosine similarity on the vecto
 
 ## RECOMMENDATION ENGINE
 
-def recommend(movie):
-    index = new[new['title'] == movie].index[0]
 
-    distances = sorted(
-        list(enumerate(similarity[index])),
-        reverse=True,
-        key=lambda x: x[1]
-    )
 
-    for i in distances[1:6]:
-        print(new.iloc[i[0]].title)
+    
 
 This function:
 - Finds the index of the selected movie
