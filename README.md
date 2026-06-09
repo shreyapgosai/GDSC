@@ -73,21 +73,13 @@ Movies dataset is cleaned and transformed by extracting important features:
 All features are combined into a single column called tags.
 
 ---
-
-## TEXT VECTORIZATION (COUNT VECTORIZER)
-
-```python
-from sklearn.feature_extraction.text import CountVectorizer
-
-cv = CountVectorizer(max_features=5000, stop_words='english')
-
 ## SIMILARITY COMPUTATION (COSINE SIMILARITY)
 
 from sklearn.metrics.pairwise import cosine_similarity
 
 similarity = cosine_similarity(vector)
 
-This computes similarity between all movies using cosine similarity on the vectorized tags. It measures how close two movies are in terms of their feature representation.
+This computes similarity between all movies using cosine similarity on the vectorized tags. It measures how similar two movies are based on their feature vectors in multidimensional space.
 
 ---
 
@@ -105,14 +97,18 @@ def recommend(movie):
     for i in distances[1:6]:
         print(new.iloc[i[0]].title)
 
-This function finds the input movie index, calculates similarity scores with all other movies, sorts them in descending order, and returns the top 5 most similar movies.
+This function:
+- Finds the index of the selected movie
+- Computes similarity scores with all other movies
+- Sorts movies based on similarity score
+- Returns top 5 most similar movies
 
 ---
 
 ## UI/UX AND WEB DEPLOYMENT
 
 - Built using Streamlit  
-- Movie selection through dropdown menu  
+- Uses dropdown menu for movie selection  
 - Button-based recommendation system  
 - Displays top recommended movies  
 - Simple and interactive user interface  
@@ -143,7 +139,7 @@ pip install -r requirements.txt
 
 streamlit run app.py  
 
-Then open in browser:
+Open in browser:
 
 http://localhost:8501  
 
@@ -152,5 +148,3 @@ http://localhost:8501
 ## TEAM
 
 Shreya Gosai
-
-vector = cv.fit_transform(new['tags']).toarray()
