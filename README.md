@@ -1,26 +1,28 @@
-# 🎬 MOVIE RECOMMENDATION SYSTEM
+# MOVIE RECOMMENDATION SYSTEM
 
 ---
 
-## 📌 Table of Contents
+## TABLE OF CONTENTS
+
 - Overview
 - Features
 - System Architecture
 - Key Components
-  - Data Processing & Feature Engineering
-  - Text Vectorization (CountVectorizer)
-  - Similarity Computation (Cosine Similarity)
-  - Recommendation Engine
+- Data Processing & Feature Engineering
+- Text Vectorization (CountVectorizer)
+- Similarity Computation (Cosine Similarity)
+- Recommendation Engine
 - UI/UX and Web Deployment
 - Installation and Usage
 - Prerequisites
 - Setup
+- Run Application
 - Team
 - License
 
 ---
 
-## 📖 Overview
+## OVERVIEW
 
 The Movie Recommendation System is a machine learning-based content filtering system that recommends movies based on similarity of content features.
 
@@ -30,32 +32,53 @@ The system is designed to mimic real-world recommendation engines like Netflix.
 
 ---
 
-## ✨ Features
+## FEATURES
 
-- Smart Data Processing: Cleans and merges movie datasets  
-- Multifeature Analysis: Uses genres, keywords, cast, crew, overview  
-- Text-Based Representation: Converts text into numerical vectors  
-- Similarity-Based Recommendations: Uses cosine similarity  
-- Fast Retrieval: Efficient ranking of similar movies  
-- Simple Web Interface: Built using Streamlit  
+- Smart data preprocessing and cleaning  
+- Uses multiple features like genres, keywords, cast, crew, overview  
+- Converts text data into numerical vectors  
+- Uses cosine similarity for recommendation  
+- Fast and efficient retrieval of similar movies  
+- Streamlit-based interactive web application  
 
 ---
 
-## 🏗️ System Architecture
+## SYSTEM ARCHITECTURE
 
-```text
-Input Movie Title
-        ↓
-Feature Extraction (Genres, Keywords, Cast, Crew, Overview)
-        ↓
-Data Cleaning & Processing
-        ↓
-Tag Generation
-        ↓
-Text Vectorization (CountVectorizer)
-        ↓
-Cosine Similarity Matrix
-        ↓
-Recommendation Engine
-        ↓
-Top 5 Similar Movies Output
+Input Movie Title  
+→ Feature Extraction (Genres, Keywords, Cast, Crew, Overview)  
+→ Data Cleaning and Processing  
+→ Tag Generation  
+→ Text Vectorization (CountVectorizer)  
+→ Cosine Similarity Matrix  
+→ Recommendation Engine  
+→ Top 5 Similar Movies Output  
+
+---
+
+## KEY COMPONENTS
+
+---
+
+## DATA PROCESSING & FEATURE ENGINEERING
+
+Movies dataset is cleaned and transformed by extracting important features:
+
+- Genres  
+- Keywords  
+- Cast (Top 3 actors)  
+- Crew (Director)  
+- Overview  
+
+All features are combined into a single column called tags.
+
+---
+
+## TEXT VECTORIZATION (COUNT VECTORIZER)
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+
+cv = CountVectorizer(max_features=5000, stop_words='english')
+
+vector = cv.fit_transform(new['tags']).toarray()
