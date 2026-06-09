@@ -81,4 +81,76 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 cv = CountVectorizer(max_features=5000, stop_words='english')
 
+## SIMILARITY COMPUTATION (COSINE SIMILARITY)
+
+from sklearn.metrics.pairwise import cosine_similarity
+
+similarity = cosine_similarity(vector)
+
+This computes similarity between all movies using cosine similarity on the vectorized tags. It measures how close two movies are in terms of their feature representation.
+
+---
+
+## RECOMMENDATION ENGINE
+
+def recommend(movie):
+    index = new[new['title'] == movie].index[0]
+
+    distances = sorted(
+        list(enumerate(similarity[index])),
+        reverse=True,
+        key=lambda x: x[1]
+    )
+
+    for i in distances[1:6]:
+        print(new.iloc[i[0]].title)
+
+This function finds the input movie index, calculates similarity scores with all other movies, sorts them in descending order, and returns the top 5 most similar movies.
+
+---
+
+## UI/UX AND WEB DEPLOYMENT
+
+- Built using Streamlit  
+- Movie selection through dropdown menu  
+- Button-based recommendation system  
+- Displays top recommended movies  
+- Simple and interactive user interface  
+
+---
+
+## INSTALLATION AND USAGE
+
+### PREREQUISITES
+
+- Python 3.8 or higher  
+- numpy  
+- pandas  
+- sklearn  
+- streamlit  
+
+---
+
+### SETUP
+
+git clone https://github.com/your-username/movie-recommendation-system.git  
+cd movie-recommendation-system  
+pip install -r requirements.txt  
+
+---
+
+## RUN APPLICATION
+
+streamlit run app.py  
+
+Then open in browser:
+
+http://localhost:8501  
+
+---
+
+## TEAM
+
+Shreya Gosai
+
 vector = cv.fit_transform(new['tags']).toarray()
